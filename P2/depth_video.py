@@ -12,14 +12,18 @@ def get_video():
     return frame_convert2.video_cv(freenect.sync_get_video()[0])
 
 def main():
+#Depth
     Depth = get_depth()
     print(get_depth())
+    #saving depth as jpg
     image = cv2.imwrite('depth_img.jpg', Depth)
-    Video = get_video()
+    #saving depth as csv file
     np.savetxt('depth_data.csv', Depth, delimiter=',')
-    #image_data('depth_data.csv'.format('123','456'),Depth)
+#Video
+    Video = get_video()
     print(get_video())
+    #saving video as jpg
     video = cv2.imwrite('video_img.jpg', Video)
-    #image_data('{}/{}_rgb_data.csv'.format(directory,directory),get_video)
-
+    #savign video as csv file
+    np.savetxt('video_data.csv', Video, delimiter=',') 
 main()
